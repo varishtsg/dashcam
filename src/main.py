@@ -9,7 +9,7 @@ VIDEO_LENGTH = (60 * 10) # in seconds
 VIDEO_RATE = 25 # framerate
 
 def main():
-    recording_path = "/home/carpi/Recordings"
+    recording_path = "/home/carpi/Recordings/"
     logging_path = "/home/carpi/Dashcam/Logs/"
     gps_dict = {
         "Date" : "xx/xx/xxxx",
@@ -20,11 +20,14 @@ def main():
     camera = PiCamera() 
     camera.resolution = (1280, 720) 
     camera.framerate = VIDEO_RATE
+    camera.rotation = 90
     camera.start_preview() 
 
     try: 
         while True:
             start = dt.datetime.now()
+            gps_dict["Date"] = dt.datetime.strftime(start, "%d/%m/%Y")
+            gps_dict["Time"] = dt.datetime.strftime(start, "%H:%M:%S")
             record_file, log_file = createFilenames(recording_path, logging_path)
             # start recording using piCamera API
             camera.start_recording(record_file) 
