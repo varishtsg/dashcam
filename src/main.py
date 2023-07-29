@@ -9,8 +9,7 @@ VIDEO_LENGTH = (60 * 10) # in seconds
 VIDEO_RATE = 25 # framerate
 
 def main():
-    port = "/dev/serial0"
-    recording_path = "/home/carpi/Dashcam/Recordings/"
+    recording_path = "/home/carpi/Recordings"
     logging_path = "/home/carpi/Dashcam/Logs/"
     gps_dict = {
         "Date" : "xx/xx/xxxx",
